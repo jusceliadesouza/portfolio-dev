@@ -1,14 +1,40 @@
-import type { NextConfig } from "next";
+import type { NextConfig } from 'next'
 
 const nextConfig: NextConfig = {
   images: {
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: 'github.com',
+        hostname: 'images.unsplash.com',
+        port: '',
+        pathname: '/**'
       },
-    ],
-  },
-};
+      {
+        protocol: 'https',
+        hostname: 'imageslot.com',
+        port: '',
+        pathname: '/**'
+      },
+      {
+        protocol: 'https',
+        hostname: 'github.com',
+        port: '',
+        pathname: '/**'
+      },
+      {
+        protocol: 'https',
+        hostname: 'avatars.githubusercontent.com',
+        port: '',
+        pathname: '/**'
+      },
+      {
+        protocol: 'https',
+        hostname: 'raw.githubusercontent.com',
+        port: '',
+        pathname: '/**'
+      }
+    ]
+  }
+}
 
-export default nextConfig;
+export default nextConfig

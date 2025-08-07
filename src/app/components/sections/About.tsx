@@ -4,6 +4,7 @@ import Image from "next/image";
 import styled from "styled-components";
 import { motion } from "framer-motion";
 import { SectionTitle } from "@/app/components/ui/SectionTitle";
+import { variables } from "@/app/styles/theme";
 
 const AboutContainer = styled.section`
   padding: 4rem 2rem;
@@ -57,8 +58,15 @@ const PhotoContainer = styled(motion.div)`
 `;
 
 export function About() {
-  const githubUsername = "jusceliadesouza";
-  const githubProfileUrl = `https://github.com/${githubUsername}.png?size=280`;
+  const profileImage =
+    "https://images.unsplash.com/photo-1529665253569-6d01c0eaf7b6?q=80&w=1085&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D";
+
+  // const githubUsername = variables.githubUsername;
+  // const profileImage = `https://github.com/${githubUsername}.png?size=280`;
+
+  // if (!githubUsername) {
+  //   console.error("GitHub username is not set in the environment variables.");
+  // }
 
   return (
     <AboutContainer id="about">
@@ -71,18 +79,13 @@ export function About() {
         >
           <SectionTitle>Sobre Mim</SectionTitle>
           <Description>
-            Minha paixão é transformar ideias e designs do{" "}
-            <strong>Figma</strong> em interfaces ricas e intuitivas. Com forte
-            experiência em <strong>React</strong> e <strong>TypeScript</strong>,
-            meu foco é sempre a <strong>performance</strong> e um processo de
-            trabalho que valoriza a <strong>colaboração</strong> e a
-            comunicação.
-          </Description>
-          <Description>
-            Prospero em ambientes que utilizam metodologias ágeis como{" "}
-            <strong>Scrum</strong> e <strong>Kanban</strong>, pois acredito que
-            um código limpo e bem testado é a base para uma experiência de
-            usuário memorável e um produto de sucesso.
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Natus
+            magnam cumque aliquam fugiat, ratione ut. Eius nobis laudantium
+            distinctio, libero dolorem cum odit quae, repellendus sapiente ipsa
+            doloribus amet deleniti? Lorem ipsum, dolor sit amet consectetur
+            adipisicing elit. Animi quae eius, dolorum culpa quos, et atque
+            repudiandae voluptatum recusandae nobis, saepe totam. Deleniti
+            aliquam doloremque dolor. Deleniti accusamus similique dolore?
           </Description>
         </TextContainer>
         <PhotoContainer
@@ -92,10 +95,11 @@ export function About() {
           transition={{ duration: 0.6, delay: 0.2 }}
         >
           <Image
-            src={githubProfileUrl}
+            src={profileImage}
             alt="Foto de perfil"
             width={280}
             height={280}
+            style={{ objectFit: "cover" }}
           />
         </PhotoContainer>
       </ContentWrapper>

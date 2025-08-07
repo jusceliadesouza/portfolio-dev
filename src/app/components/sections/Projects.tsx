@@ -1,28 +1,30 @@
 // src/components/sections/Projects.tsx
-'use client';
+"use client";
 
-import Image from 'next/image';
-import styled from 'styled-components';
-import { motion } from 'framer-motion';
-import { FiGithub, FiExternalLink } from 'react-icons/fi';
-import { SectionTitle } from '@/app/components/ui/SectionTitle';
+import Image from "next/image";
+import styled from "styled-components";
+import { motion } from "framer-motion";
+import { FiGithub, FiExternalLink } from "react-icons/fi";
+import { SectionTitle } from "@/app/components/ui/SectionTitle";
 
 const projectsData = [
   {
-    title: 'Plataforma de E-commerce - "ModaStore"',
-    description: 'O desafio foi construir um e-commerce completo, com foco em performance e experiência de usuário no mobile. Utilizei Next.js para renderização estática (SSG) das páginas de produtos, garantindo um carregamento quase instantâneo. O estado global do carrinho de compras foi gerenciado com Zustand, proporcionando uma experiência de usuário fluida e reativa sem o boilerplate do Redux.',
-    imageSrc: '/placeholder-project-1.png', // Coloque sua imagem em /public
-    tags: ['React', 'Next.js', 'TypeScript', 'Zustand', 'Styled Components'],
-    liveUrl: '#', // Link para o deploy
-    codeUrl: '#', // Link para o repositório no GitHub
+    title: "Project 1",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin vel urna nec leo facilisis commodo. Sed euismod, nunc at tincidunt facilisis, enim erat aliquet nisi, a tincidunt ligula justo in quam. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Integer nec odio. Praesent libero. Sed cursus ante dapibus diam.",
+    imageSrc: "https://images.unsplash.com/photo-1491975474562-1f4e30bc9468?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", // Coloque sua imagem em /public
+    tags: ["React", "Next.js", "TypeScript", "Zustand", "Styled Components"],
+    liveUrl: "#", // Link para o deploy
+    codeUrl: "#", // Link para o repositório no GitHub
   },
   {
-    title: 'Dashboard de Análise - "DataView"',
-    description: 'Criei um dashboard interativo para visualização de dados consumidos de uma API REST pública. O maior desafio foi criar interfaces ricas e componentes de gráficos reutilizáveis. Utilizei React com TypeScript para garantir a tipagem segura dos dados da API e a biblioteca Chart.js para renderizar os gráficos, demonstrando habilidade na integração de bibliotecas de terceiros e na manipulação de dados assíncronos.',
-    imageSrc: '/placeholder-project-2.png', // Coloque sua imagem em /public
-    tags: ['React', 'TypeScript', 'API REST', 'Chart.js', 'Framer Motion'],
-    liveUrl: '#',
-    codeUrl: '#',
+    title: 'Project 2"',
+    description:
+      "Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+    imageSrc: "https://images.unsplash.com/photo-1525547719571-a2d4ac8945e2?q=80&w=764&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", // Coloque sua imagem em /public
+    tags: ["React", "TypeScript", "API REST", "Chart.js", "Framer Motion"],
+    liveUrl: "#",
+    codeUrl: "#",
   },
 ];
 
@@ -60,11 +62,11 @@ const ProjectImageContainer = styled.div`
   position: relative;
   border-radius: 8px;
   overflow: hidden;
-  box-shadow: 0 10px 30px -15px rgba(0,0,0,0.2);
-  
+  box-shadow: 0 10px 30px -15px rgba(0, 0, 0, 0.2);
+
   // Efeito de overlay
   &::after {
-    content: '';
+    content: "";
     position: absolute;
     top: 0;
     left: 0;
@@ -75,7 +77,7 @@ const ProjectImageContainer = styled.div`
     opacity: 0.3;
     transition: opacity 0.3s ease;
   }
-  
+
   &:hover::after {
     opacity: 0;
   }
@@ -111,7 +113,7 @@ const ProjectDescription = styled.div`
   color: ${({ theme }) => theme.text_body};
   padding: ${({ theme }) => theme.spacing.lg};
   border-radius: 8px;
-  box-shadow: 0 10px 30px -15px rgba(0,0,0,0.2);
+  box-shadow: 0 10px 30px -15px rgba(0, 0, 0, 0.2);
   line-height: 1.6;
 `;
 
@@ -130,7 +132,7 @@ const TagsContainer = styled.ul`
 `;
 
 const Tag = styled.li`
-  font-family: 'monospace';
+  font-family: "monospace";
   font-size: 0.8rem;
   color: ${({ theme }) => theme.interactive};
 `;
@@ -139,7 +141,7 @@ const LinksContainer = styled.div`
   display: flex;
   justify-content: flex-end;
   gap: ${({ theme }) => theme.spacing.md};
-  
+
   @media (max-width: 768px) {
     justify-content: flex-start;
   }
@@ -148,7 +150,7 @@ const LinksContainer = styled.div`
     color: ${({ theme }) => theme.text_body};
     font-size: 1.5rem;
     transition: color 0.3s ease;
-    
+
     &:hover {
       color: ${({ theme }) => theme.interactive};
     }
@@ -162,12 +164,12 @@ export function Projects() {
       {projectsData.map((project, index) => (
         <ProjectCard key={index}>
           <ProjectImageContainer>
-            <Image 
-              src={project.imageSrc} 
-              alt={`Screenshot do projeto ${project.title}`} 
-              width={700} 
-              height={440} 
-              style={{ width: '100%', height: 'auto' }}
+            <Image
+              src={project.imageSrc}
+              alt={`Screenshot do projeto ${project.title}`}
+              width={700}
+              height={440}
+              style={{ width: "100%", height: "100%", objectFit: "cover" }}
             />
           </ProjectImageContainer>
           <ProjectInfo>
@@ -176,13 +178,25 @@ export function Projects() {
               <p>{project.description}</p>
             </ProjectDescription>
             <TagsContainer>
-              {project.tags.map(tag => <Tag key={tag}>{tag}</Tag>)}
+              {project.tags.map((tag) => (
+                <Tag key={tag}>{tag}</Tag>
+              ))}
             </TagsContainer>
             <LinksContainer>
-              <a href={project.codeUrl} target="_blank" rel="noopener noreferrer" aria-label="Ver código no GitHub">
+              <a
+                href={project.codeUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Ver código no GitHub"
+              >
                 <FiGithub />
               </a>
-              <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" aria-label="Ver projeto ao vivo">
+              <a
+                href={project.liveUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Ver projeto ao vivo"
+              >
                 <FiExternalLink />
               </a>
             </LinksContainer>

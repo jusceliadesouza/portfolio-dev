@@ -1,7 +1,8 @@
-'use client';
+"use client";
 
-import styled from 'styled-components';
-import { FiGithub, FiLinkedin } from 'react-icons/fi';
+import styled from "styled-components";
+import { FiGithub, FiLinkedin } from "react-icons/fi";
+import { variables } from "@/app/styles/theme";
 
 const FooterContainer = styled.footer`
   padding: 2rem;
@@ -37,18 +38,41 @@ const CopyrightText = styled.p`
 export function Footer() {
   const currentYear = new Date().getFullYear();
 
+  const githubUsername = variables.githubUsername;
+  const githubProfileUrl = `https://github.com/${githubUsername}`;
+  if (!githubUsername) {
+    console.error("GitHub username is not set in the environment variables.");
+  }
+  
+  const linkedinUsername = variables.linkedinUsername;
+  const linkedinProfileUrl = `https://www.linkedin.com/in/${linkedinUsername}`;
+  if (!linkedinUsername) {
+    console.error("LinkedIn username is not set in the environment variables.");
+  }
+
   return (
     <FooterContainer>
       <SocialLinks>
-        <a href="https://github.com/jusceliadesouza" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+        <a
+          href={githubProfileUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="GitHub"
+        >
           <FiGithub />
         </a>
-        <a href="https://linkedin.com/in/jusceliadesouza" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+        <a
+          href={linkedinProfileUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="LinkedIn"
+        >
           <FiLinkedin />
         </a>
       </SocialLinks>
       <CopyrightText>
-        Construído com Next.js e <span>💚</span> por Juscélia de Souza © {currentYear}
+        Construído com Next.js e <span>💚</span> por Juscélia de Souza ©{" "}
+        {currentYear}
       </CopyrightText>
     </FooterContainer>
   );

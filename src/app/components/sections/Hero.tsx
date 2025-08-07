@@ -6,6 +6,7 @@ import { Button } from "@/app/components/ui/Button";
 import { ThemeSwitcher } from "@/app/components/ui/ThemeSwitcher";
 
 import { FaGithub, FaLinkedin } from "react-icons/fa6";
+import { variables } from "@/app/styles/theme";
 
 // --- Styled Components ---
 const HeroContainer = styled.section`
@@ -18,10 +19,10 @@ const HeroContainer = styled.section`
   padding: 2rem;
 `;
 
-const Header = styled.header`
-  position: absolute;
+const ThemeSwitcherContainer = styled.header`
+  position: fixed;
   top: 2rem;
-  right: 2rem;
+  right: 1rem;
 `;
 
 const ContentWrapper = styled.div`
@@ -33,6 +34,10 @@ const Title = styled(motion.h1)`
   font-weight: 700;
   color: ${({ theme }) => theme.text_focus};
   margin-bottom: 1rem;
+`;
+
+const TitleSpan = styled.span`
+  color: ${({ theme }) => theme.interactive};
 `;
 
 const Subtitle = styled(motion.p)`
@@ -86,23 +91,34 @@ const itemVariants = {
 };
 
 export function Hero() {
+  const gitUsername = variables.githubUsername;
+  const gitProfileUrl = `https://github.com/${gitUsername}`;
+  if (!gitUsername) {
+    console.error("GitHub username is not set in the environment variables.");
+  }
+
+  const linkedinUsername = variables.linkedinUsername;
+  const linkedinUrl = `https://www.linkedin.com/in/${linkedinUsername}/`;
+  if (!linkedinUsername) {
+    console.error("LinkedIn username is not set in the environment variables.");
+  }
+
   return (
     <HeroContainer>
-      <Header>
-        <ThemeSwitcher />
-      </Header>
-
       <motion.div
         variants={containerVariants}
         initial="hidden"
         animate="visible"
       >
         <ContentWrapper>
-          <Title variants={itemVariants}>Olá! Sou Juscélia de Souza</Title>
+          <Title variants={itemVariants}>
+            Olá! Sou <TitleSpan>Fulano de Tal</TitleSpan>
+          </Title>
           <Subtitle variants={itemVariants}>
-            Desenvolvedora Front-End especialista em React e na criação de
-            interfaces ricas e performáticas para uma excepcional experiência de
-            usuário.
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Provident,
+            alias ex quasi corrupti ad soluta sapiente. Eos quod quis architecto
+            dolores iste nesciunt cupiditate, libero maiores esse, provident
+            porro dignissimos!
           </Subtitle>
 
           <ButtonContainer variants={itemVariants}>
@@ -114,7 +130,7 @@ export function Hero() {
 
           <SocialLinks variants={itemVariants}>
             <a
-              href="https://github.com/jusceliadesouza"
+              href={gitProfileUrl}
               target="_blank"
               rel="noopener noreferrer"
               aria-label="GitHub"
@@ -122,7 +138,7 @@ export function Hero() {
               <FaGithub />
             </a>
             <a
-              href="https://linkedin.com/in/jusceliadesouza"
+              href={linkedinUrl}
               target="_blank"
               rel="noopener noreferrer"
               aria-label="LinkedIn"
@@ -132,6 +148,10 @@ export function Hero() {
           </SocialLinks>
         </ContentWrapper>
       </motion.div>
+
+      <ThemeSwitcherContainer>
+        <ThemeSwitcher />
+      </ThemeSwitcherContainer>
     </HeroContainer>
   );
 }

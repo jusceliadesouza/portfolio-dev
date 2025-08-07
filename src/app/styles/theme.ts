@@ -77,3 +77,9 @@ export const theme = {
     highlight: colors.slate[100],
   }
 }
+
+export const variables = {
+  email: 'yourname@yourdomain.com',
+  githubUsername: 'jusceliadesouza',
+  linkedinUsername: 'jusceliadesouza',
+}

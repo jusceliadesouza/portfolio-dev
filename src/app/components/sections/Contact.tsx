@@ -1,9 +1,10 @@
-'use client';
+"use client";
 
-import styled from 'styled-components';
-import { motion } from 'framer-motion';
-import { SectionTitle } from '@/app/components/ui/SectionTitle';
-import { Button } from '@/app/components/ui/Button';
+import styled from "styled-components";
+import { motion } from "framer-motion";
+import { SectionTitle } from "@/app/components/ui/SectionTitle";
+import { Button } from "@/app/components/ui/Button";
+import { variables } from "@/app/styles/theme";
 
 const ContactContainer = styled.section`
   padding: 6rem 2rem;
@@ -50,15 +51,20 @@ export function Contact() {
         viewport={{ once: true, amount: 0.5 }}
         transition={{ duration: 0.6 }}
       >
-        <SectionTitle style={{ margin: '0 auto 1rem auto' }}>Vamos Conversar?</SectionTitle>
+        <SectionTitle style={{ margin: "0 auto 1rem auto" }}>
+          Vamos Conversar?
+        </SectionTitle>
         <CallToAction>
-          Estou sempre aberta a novas oportunidades e colaborações. Se você tem um projeto em mente ou acredita que meu perfil se encaixa na sua equipe, adoraria ouvir de você.
+          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Facere
+          dignissimos error possimus. Autem eaque quasi temporibus, natus iste
+          omnis perspiciatis nostrum illum. Nobis culpa praesentium id atque
+          reprehenderit provident quis?
         </CallToAction>
-        <EmailLink href="mailto:dev@jusceliadesouza.com.br">
-          dev@jusceliadesouza.com.br
+        <EmailLink href={`mailto:${variables.email}`}>
+          {`${variables.email}`}
         </EmailLink>
         <div>
-          <Button href="/cv-juscelia-souza.pdf" primary download>
+          <Button href="/cv-your-name.pdf" primary download>
             Download do meu CV
           </Button>
         </div>
